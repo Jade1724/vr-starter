@@ -26,8 +26,6 @@ var directional_movement = false
 
 var current_controller_id = self.get_controller_id() + 99
 
-#== Remove this line later ==
-export (PackedScene) var Capsule
 
 var button_mapping = {
 	trigger = 0,
@@ -137,8 +135,6 @@ func button_pressed(button_index):
 
 	# If the trigger is pressed...
 	if button_index == button_mapping['trigger']:
-		var capsule = Capsule.instance()
-		add_child(capsule)
 		if held_object:
 			if held_object.has_method("interact"):
 				held_object.interact()

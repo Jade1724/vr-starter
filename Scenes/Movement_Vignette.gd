@@ -3,7 +3,6 @@ extends ColorRect
 var controller_one
 var controller_two
 
-export (PackedScene) var Capsule
 
 func _ready():
 	yield(get_tree(), "idle_frame")

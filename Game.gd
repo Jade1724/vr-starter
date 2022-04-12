@@ -3,6 +3,9 @@ extends Spatial
 var webxr_interface
 var vr_supported = false
 
+var spheres_left = 10
+var sphere_ui = null
+
 #== WebXR setups ====================================
 func _ready():
 	# We assume this node has a button as a child.
@@ -126,3 +129,9 @@ func _webxr_on_squeeze_start(controller_id: int) -> void:
  
 func _webxr_on_squeeze_end(controller_id: int) -> void:
 	print("Squeeze End: " + str(controller_id))
+	
+func remove_sphere():
+	spheres_left -= 1
+
+	if sphere_ui:
+		sphere_ui.update_ui(spheres_left)

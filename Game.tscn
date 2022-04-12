@@ -458,15 +458,12 @@ current = true
 
 [node name="Left_Controller" parent="ARVROrigin" instance=ExtResource( 2 )]
 script = ExtResource( 15 )
-Capsule = ExtResource( 10 )
 
 [node name="Right_Controller" parent="ARVROrigin" instance=ExtResource( 3 )]
 script = ExtResource( 15 )
-Capsule = ExtResource( 10 )
 
 [node name="Movement_Vignette" parent="ARVROrigin" instance=ExtResource( 4 )]
 visible = false
-Capsule = ExtResource( 10 )
 
 [node name="Spheres" type="Spatial" parent="."]
 
