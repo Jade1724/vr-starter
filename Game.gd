@@ -3,8 +3,6 @@ extends Spatial
 var webxr_interface
 var vr_supported = false
 
-export (PackedScene) var Capsule
-
 #== WebXR setups ====================================
 func _ready():
 	# We assume this node has a button as a child.
@@ -33,8 +31,8 @@ func _ready():
 		webxr_interface.connect("squeezestart", self, "_webxr_on_squeeze_start")
 		webxr_interface.connect("squeezeend", self, "_webxr_on_squeeze_end")
 		
-	$ARVROrigin/LeftController.connect("button_pressed", self, "_on_LeftController_button_pressed")
-	$ARVROrigin/LeftController.connect("button_release", self, "_on_LeftController_button_release")
+	$ARVROrigin/Left_Controller.connect("button_pressed", self, "_on_LeftController_button_pressed")
+	$ARVROrigin/Left_Controller.connect("button_release", self, "_on_LeftController_button_release")
 
 func _webxr_session_supported(session_mode, supported):
 	if session_mode == 'immersive-vr':
@@ -91,8 +89,6 @@ func _webxr_session_failed(message):
 	
 func _on_LeftController_button_pressed(button: int) -> void:
 	print ("Button pressed: " + str(button))
-	var capsule = Capsule.instance()
-	add_child(capsule)
  
 func _on_LeftController_button_release(button: int) -> void:
 	print ("Button release: " + str(button))
@@ -107,8 +103,6 @@ func _process(delta: float) -> void:
 		Input.get_joy_axis(left_controller_id, thumbstick_y_axis_id))
 
 	if thumbstick_vector != Vector2.ZERO:
-		var capsule = Capsule.instance()
-		add_child(capsule)
 		print ("Left thumbstick position: " + str(thumbstick_vector))
 		
 func _webxr_on_select(controller_id: int) -> void:

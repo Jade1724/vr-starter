@@ -466,6 +466,7 @@ Capsule = ExtResource( 10 )
 
 [node name="Movement_Vignette" parent="ARVROrigin" instance=ExtResource( 4 )]
 visible = false
+Capsule = ExtResource( 10 )
 
 [node name="Spheres" type="Spatial" parent="."]
 
