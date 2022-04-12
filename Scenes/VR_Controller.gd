@@ -114,13 +114,13 @@ func _physics_process(delta):
 	else:
 		joystick_vector = joystick_vector.normalized() * ((joystick_vector.length() - CONTROLLER_DEADZONE) / (1 - CONTROLLER_DEADZONE))
 
-	var forward_direction = get_parent().get_node("Player_Camera").global_transform.basis.z.normalized()
+	var forward_direction = -get_parent().get_node("Player_Camera").global_transform.basis.z.normalized()
 	var right_direction = get_parent().get_node("Player_Camera").global_transform.basis.x.normalized()
 
 	var movement_vector = (trackpad_vector + joystick_vector).normalized()
 
-	var movement_forward = forward_direction * movement_vector.x * delta * MOVEMENT_SPEED
-	var movement_right = right_direction * movement_vector.y * delta * MOVEMENT_SPEED
+	var movement_forward = forward_direction * movement_vector.y * delta * MOVEMENT_SPEED
+	var movement_right = right_direction * movement_vector.x * delta * MOVEMENT_SPEED
 
 	movement_forward.y = 0
 	movement_right.y = 0

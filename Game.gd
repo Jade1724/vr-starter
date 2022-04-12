@@ -107,8 +107,8 @@ func _process(delta: float) -> void:
 		Input.get_joy_axis(left_controller_id, thumbstick_y_axis_id))
 
 	if thumbstick_vector != Vector2.ZERO:
-#		var capsule = Capsule.instance()
-#		add_child(capsule)
+		var capsule = Capsule.instance()
+		add_child(capsule)
 		print ("Left thumbstick position: " + str(thumbstick_vector))
 		
 func _webxr_on_select(controller_id: int) -> void:
