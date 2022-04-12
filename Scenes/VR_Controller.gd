@@ -24,6 +24,28 @@ const MOVEMENT_SPEED = 1.5
 
 var directional_movement = false
 
+var current_controller_id = self.get_controller_id() + 99
+
+#== Remove this line later ==
+export (PackedScene) var Capsule
+
+var button_mapping = {
+	trigger = 0,
+	grip = 1,
+	button_1 = 4,
+	button_2 = 5,
+}
+	
+var axis_mapping = {
+	thumbstick_x = 2,
+	thumbstick_y = 3
+}
+
+var device_mapping = {
+	left = 100,
+	right = 101,
+}
+
 func _ready():
 	teleport_mesh = get_tree().root.get_node("Game/Teleport_Mesh")
 	teleport_button_down = false
@@ -34,7 +56,6 @@ func _ready():
 
 	connect("button_pressed", self, "button_pressed")
 	connect("button_release", self, "button_released")
-
 
 func _physics_process(delta):
 
@@ -79,9 +100,10 @@ func _physics_process(delta):
 	# --------------------
 	# NOTE: you may need to change this depending on which VR controllers
 	# you are using and which OS you are on.
-	var trackpad_vector = Vector2(-get_joystick_axis(1), get_joystick_axis(0))
-	var joystick_vector = Vector2(-get_joystick_axis(5), get_joystick_axis(4))
-
+		
+	var trackpad_vector := Vector2(Input.get_joy_axis(current_controller_id, axis_mapping['thumbstick_x']), Input.get_joy_axis(current_controller_id, axis_mapping['thumbstick_y']))
+	var joystick_vector := Vector2(Input.get_joy_axis(current_controller_id, axis_mapping['thumbstick_x']), Input.get_joy_axis(current_controller_id, axis_mapping['thumbstick_y']))
+		
 	if trackpad_vector.length() < CONTROLLER_DEADZONE:
 		trackpad_vector = Vector2(0, 0)
 	else:
@@ -114,7 +136,9 @@ func _physics_process(delta):
 func button_pressed(button_index):
 
 	# If the trigger is pressed...
-	if button_index == 15:
+	if button_index == button_mapping['trigger']:
+		var capsule = Capsule.instance()
+		add_child(capsule)
 		if held_object:
 			if held_object.has_method("interact"):
 				held_object.interact()
@@ -127,7 +151,7 @@ func button_pressed(button_index):
 
 
 	# If the grab button is pressed...
-	if button_index == 2:
+	if button_index == button_mapping['grip']:
 		if teleport_button_down:
 			return
 
@@ -211,7 +235,7 @@ func button_pressed(button_index):
 func button_released(button_index):
 
 	# If the trigger button is released...
-	if button_index == 15:
+	if button_index == button_mapping['trigger']:
 
 		if teleport_button_down:
 
