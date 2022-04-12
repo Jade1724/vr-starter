@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Assets/CGTuts_OceanHDRI_Freebie_001.hdr" type="Texture" id=1]
 [ext_resource path="res://Scenes/Left_Controller.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/Shotgun.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Audio/Soundrangers_Nature_Ambience/coastal_ambience_01_120_loop.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Game.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/VR_Controller.gd" type="Script" id=15]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -456,8 +457,10 @@ world_scale = 1.4
 current = true
 
 [node name="Left_Controller" parent="ARVROrigin" instance=ExtResource( 2 )]
+script = ExtResource( 15 )
 
 [node name="Right_Controller" parent="ARVROrigin" instance=ExtResource( 3 )]
+script = ExtResource( 15 )
 
 [node name="Movement_Vignette" parent="ARVROrigin" instance=ExtResource( 4 )]
 visible = false
@@ -1172,6 +1175,9 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_left = 379.0
+margin_top = 267.0
+margin_right = 444.0
+margin_bottom = 287.0
+rect_scale = Vector2( 5.07871, 4.64784 )
 text = "Enter VR"
