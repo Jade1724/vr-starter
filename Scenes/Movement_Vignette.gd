@@ -3,17 +3,15 @@ extends ColorRect
 var controller_one
 var controller_two
 
-
 func _ready():
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 
-#	var interface = ARVRServer.get_primary_interface()
-	var webxr_interface = ARVRServer.find_interface("WebXR")
+	var interface = ARVRServer.get_primary_interface()
 
-	rect_size = webxr_interface.get_render_targetsize()
+	rect_size = interface.get_render_targetsize()
 	rect_position = Vector2(0, 0)
 
 	controller_one = get_parent().get_node("Left_Controller")

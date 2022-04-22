@@ -4,8 +4,6 @@ var destroyed = false
 var destroyed_timer = 0
 const DESTROY_WAIT_TIME = 80
 
-export (PackedScene) var Capsule
-
 var health = 80
 
 const RIGID_BODY_TARGET = preload("res://Assets/RigidBody_Sphere.scn")
@@ -15,15 +13,12 @@ func _ready():
 
 func _physics_process(delta):
 	destroyed_timer += delta
-		
-	var capsule = Capsule.instance()
-	add_child(capsule)
 	if destroyed_timer >= DESTROY_WAIT_TIME:
 		queue_free()
 
 
 func damage(bullet_global_transform, damage):
-	
+
 	if destroyed:
 		return
 
