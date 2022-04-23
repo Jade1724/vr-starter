@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/CGTuts_OceanHDRI_Freebie_001.hdr" type="Texture" id=1]
 [ext_resource path="res://Scenes/Left_Controller.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Audio/Soundrangers_Nature_Ambience/coastal_ambience_01_120_loop.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Game.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/VR_Controller.gd" type="Script" id=15]
+[ext_resource path="res://Base_Control.gd" type="Script" id=16]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -529,6 +530,7 @@ gui_snap_controls_to_pixels = false
 [node name="Base_Control" type="Control" parent="GUI/GUI"]
 margin_right = 800.0
 margin_bottom = 800.0
+script = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="GUI/GUI/Base_Control"]
 anchor_right = 1.0
